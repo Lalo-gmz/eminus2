@@ -10,6 +10,7 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/fonts/css/font-awesome.min.css">
 	
 </head>
 <body>

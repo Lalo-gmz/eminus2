@@ -9,3 +9,16 @@
 </div>
 </body>
 </html>
+
+<?php 
+
+	if (isset($_GET['alerta'])) {
+			if ($_GET['alerta'] == 3) {
+				echo '<script language="javascript">alert("Elemento Elimnado Correctamente");</script>'; 
+			}
+
+			if ($_GET['alerta'] == 4) {
+				echo '<script language="javascript">alert("No se pudo Eliminar el Elemento");</script>'; 
+			}
+	}
+?>
