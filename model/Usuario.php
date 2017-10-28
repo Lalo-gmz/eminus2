@@ -1,5 +1,5 @@
 <?php 
-require "Connection.php";
+
 class Usuario extends Connection 
 {
 	public function insertUsuario($nombre, $pass){
@@ -12,6 +12,10 @@ class Usuario extends Connection
 			return false;
 		}
 
+	}
+
+	public function getAllUsuario(){
+		return $this->con->query("SELECT * FROM usuario")->fetchAll(PDO::FETCH_ASSOC);
 	}	
 
 }

@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
-			<h2>CRUD</h2>
+			<h2>Lista de Usuarios</h2>
 			<?php 
 			if (isset($_GET['alerta'])) {
 				if ($_GET['alerta'] == 1) {
@@ -12,11 +12,12 @@
 				}
 			}	
 			?>
+			
 		</div>
 
 		<div class="col">
 			<h2>Registro de Usuario</h2>
-			<form method="post" action="controller/vista1.php">
+			<form method="post" action="<?=$sitePath?>usuarioTask.php?task=add">
 				<div class="form-group">
 					<label for="nombre" >Nombre: </label>
 					<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Introduce el Nombre">
