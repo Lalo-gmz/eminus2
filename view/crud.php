@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
+			<br>
 			<h3>Lista de Usuarios</h3>
 			<?php 
 			if (isset($_GET['alerta'])) {
@@ -28,7 +29,7 @@
 							<th><?=$key['idUsuario']?></th>
 							<td><?=$key['matricula']?></td>
 							<td><?=$key['contrasena']?></td>
-							<td><a class="btn btn-warning" href="<?=$sitePath?>vista1.php?id=<?=$key['idUsuario']?>&task=edit"><i class="fa fa-pencil"></i></a><a class="btn btn-danger" href="<?=$sitePath?>vista1.php?id=<?=$key['idUsuario']?>&task=del"><i class="fa fa-trash"></i></a></td>
+							<td><a class="btn btn-warning btn-sm" href="<?=$sitePath?>vista1.php?id=<?=$key['idUsuario']?>&task=edit"><i class="fa fa-pencil"></i></a> <a class="btn btn-danger btn-sm" href="<?=$sitePath?>vista1.php?id=<?=$key['idUsuario']?>&task=del"><i class="fa fa-trash"></i></a></td>
 
 						</tr>
 					<?php endforeach ?>
@@ -38,6 +39,7 @@
 		</div>
 
 		<div class="col">
+			<br>
 			<h2>Registro de Usuario</h2>
 			<form method="post" action="<?=$sitePath?>vista1.php?task=add">
 				<input type="hidden" name="task" value="<?= $accion ?>">
