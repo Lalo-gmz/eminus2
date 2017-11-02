@@ -1,5 +1,7 @@
-<footer>
-	
+<footer class="footer">
+	<div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div>
 </footer>
 <!-- SCRIPTS -->
 <script type="text/javascript" src="assets/bootstrap4/js/jquery-3.2.1.min.js"></script>

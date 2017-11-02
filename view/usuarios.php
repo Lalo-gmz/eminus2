@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col">
+		<div class="col-md-6">
 			<br>
 			<h3>Lista de Usuarios</h3>
 			<?php 
@@ -13,7 +13,7 @@
 				}
 			}	
 			?>
-			<table class="table">
+			<table class="table table-responsive bg-blanco">
 				<thead>
 					<tr>
 						<th>id</th>
@@ -38,7 +38,7 @@
 			</table>
 		</div>
 
-		<div class="col">
+		<div class="col-md-6">
 			<br>
 			<h2>Registro de Usuario</h2>
 			<form method="post" action="<?=$sitePath?>vista1.php?task=add">
@@ -64,3 +64,5 @@
 	
 	</div>
 </div>
+<br>
+<br>
