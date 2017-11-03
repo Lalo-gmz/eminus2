@@ -1,38 +1,62 @@
 <?php
-
+require "../model/Usuario.php";
 $usrObject = new Usuario();
 
 $usuarios = $usrObject->getAllUsuario();
+if (isset($_POST['tabla'])) {
+	$table="";
+	foreach ($usuarios as $key){
+						$table .='<tr>
+							<th>'.$key['idUsuario'].'</th>
+							<td>'.$key['matricula'].'</td>
+							<td>'.$key['nombre'].'</td>
+							<td>'.$key['apPaterno'].'</td>
+							<td>'.$key['apMaterno'].'</td>
+							<td>'.$key['eMail'].'</td>
+							<td>'.$key['telefono'].'</td>
+							<td>'.$key['idEscuela'].'</td>
+							<td>
+							<a class="btn btn-warning btn-sm" href="usuarios.php?id='.$key['idUsuario'].'&task=edit"><i class="fa fa-pencil"></i></a> 
+							<a class="btn btn-danger btn-sm" href="usuarios.php?id='.$key['idUsuario'].'&task=del"><i class="fa fa-trash"></i></a></td>
+
+						</tr>';
+					}
+	echo $table;
+}
 
 $datoNombre = "";
 $datoContra = "";
 $datoContra2 = "";
 $inputHidden = "";
+$accion = "add";
 
-if (isset($_GET['task'])) {
-	if ($_GET['task']== "add" AND !isset($_POST['task'])) {
+
+
+if (isset($_POST['task'])) {
+	if ($_POST['task'] == "add") {
 		$nombre = $_POST['nombre'];
 		$pass1 = $_POST['pass1'];
 		$pass2 = $_POST['pass2'];
 
 		if ($pass1 != $pass2) {
-			header("Location: vista1.php?alerta=1");	
+			
 		}else{
 
 
 			$control = $usrObject->insertUsuario($nombre, $pass1);
 
+
 			if ($control) {
-				header("Location: vista1.php?alerta=2");	
+				
 			}
 		}
 	}
 	if ($_GET['task'] == "del" AND isset($_GET['id'])) {
 			$control = $usrObject->delUsuario($_GET['id']);
 			if ($control) {
-				header("Location: vista1.php?alerta=3");
+				header("Location: usuarios.php?alerta=3");
 			}else{
-				header("Location: vista1.php?alerta=4");
+				header("Location: usuarios.php?alerta=4");
 			}
 	}
 
@@ -53,9 +77,9 @@ if (isset($_GET['task'])) {
 	
 		$control = $usrObject->editUsuario($id, $pass1, $nombre);
 		if ($control) {
-				header("Location: vista1.php?alerta=10");
+				header("Location: usuarios.php?alerta=10");
 			}else{
-				header("Location: vista1.php?alerta=11");
+				header("Location: usuarios.php?alerta=11");
 			}
 	}
 

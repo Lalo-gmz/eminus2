@@ -1,5 +1,5 @@
 <?php 
-
+require "Connection.php";
 class Usuario extends Connection 
 {
 	public function insertUsuario($nombre, $pass){
