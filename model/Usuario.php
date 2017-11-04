@@ -1,7 +1,10 @@
 <?php 
-require "Connection.php";
+
 class Usuario extends Connection 
 {
+	public function contarUsuario(){
+		return $this->con->query("SELECT COUNT(*) AS total FROM usuario")->fetch(PDO::FETCH_ASSOC);
+	}
 	public function insertUsuario($nombre, $pass){
 		$query = $this->con->prepare("INSERT INTO usuario (matricula, contrasena) VALUES (?,?)");
 		$exc = $query->execute(array($nombre, $pass));
@@ -14,8 +17,8 @@ class Usuario extends Connection
 
 	}
 
-	public function getAllUsuario(){
-		return $this->con->query("SELECT * FROM usuario")->fetchAll(PDO::FETCH_ASSOC);
+	public function getAllUsuario($limInf,$sizePage){
+		return $this->con->query("SELECT * FROM usuario ORDER BY idUsuario DESC LIMIT ".$limInf.",".$sizePage."")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function delUsuario($id){
 		$control = $this->con->exec("DELETE FROM usuario WHERE idUsuario = '$id' ");
