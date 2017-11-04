@@ -60,30 +60,31 @@ foreach ($usuarios as $key)
 	<td>'.$key['telefono'].'</td>
 	<td>'.$key['idEscuela'].'</td>
 	<td>
-		<a class="btn btn-warning btn-sm update" href="'.$key['idUsuario'].'"><i class="fa fa-pencil"></i></a> 
-		<a class="btn btn-danger btn-sm delete" href="'.$sitePath.'usuarios.php?id='.$key['idUsuario'].'&task=del"><i class="fa fa-trash"></i></a></td>
+		<a class="btn btn-warning btn-sm update" href="'.$sitePath.'usuarios.php?task=edit&id='.$key['idUsuario'].'"><i class="fa fa-pencil"></i></a> 
+		<a class="btn btn-danger btn-sm delete" href="'.$sitePath.'usuarios.php?task=del&id='.$key['idUsuario'].'&task=del"><i class="fa fa-trash"></i></a></td>
 
 	</tr>';
 }
 
 
 
+$visibleF= 'none';
+$visibleC = '';
 
-$datoNombre = "";
-$datoContra = "";
-$datoContra2 = "";
-$inputHidden = "";
+$input = "";
+$campo1 = "";
+$campo2 = "";
+$campo3 = "";
+$campo4 = "";
+$campo5 = "";
+$campo6 = "";
+$campo7 = "";
+$campo8 = "";
+
 $accion = "add";
 
 //ELIMINAR REGISTRO
-if (isset($_GET['task']) AND isset($_GET['id'])) {
-			$control = $usrObject->delUsuario($_GET['id']);
-			if ($control) {
-				header("Location: usuarios.php?alerta=3");
-			}else{
-				header("Location: usuarios.php?alerta=4");
-			}
-	}
+
 
 if (isset($_POST['task'])) {
 	if ($_POST['task'] == "add") {
@@ -92,31 +93,45 @@ if (isset($_POST['task'])) {
 		$pass2 = $_POST['pass2'];
 
 		$control = $usrObject->insertUsuario($nombre, $pass1);
-
-		}
-	
-	
-	if ($_GET['task'] == "edit" AND isset($_GET['id'])) {
-			$control = $usrObject->getUsuarioById($_GET['id']);
-			$id = $control['idUsuario'];
-			$datoNombre = $control['matricula'];
-			$datoContra = $control['contrasena'];
-			$datoContra2 = $control['contrasena'];
-			$inputHidden = '<input type="hidden" name="id" value="'.$id.'">';
-			$accion = "edit";
+		if ($control) {
+				header("Location: usuarios.php?alerta=1");
+			}
 	}
-
-	if ($_GET['task'] == "add" AND $_POST['task']=="edit") {
+	if ($_POST['task']=="edit") {
 		$id= $_POST['id'];
 		$nombre = $_POST['nombre'];
 		$pass1 = $_POST['pass1'];
 	
 		$control = $usrObject->editUsuario($id, $pass1, $nombre);
 		if ($control) {
-				header("Location: usuarios.php?alerta=10");
-			}else{
-				header("Location: usuarios.php?alerta=11");
+				header("Location: usuarios.php?alerta=2");
 			}
 	}
 
+	
 }
+if (isset($_GET['task'])) {
+	if ($_GET['task'] == "edit") {
+			$control = $usrObject->getUsuarioById($_GET['id']);
+			$visibleF= '';
+			$visibleC= 'none';
+			$accion = "edit";
+			$input = '<input class="form-control" type="hidden" name="task" value="'.$control['idUsuario'].'">';
+			$campo1 = $control['matricula'];
+			$campo2 = $control['nombre'];
+			$campo3 = $control['apPaterno'];
+			$campo4 = $control['apMaterno'];
+			$campo5 = $control['eMail'];
+			$campo6 = $control['telefono'];
+			$campo7 = $control['contrasena'];
+			$campo8 = $control['idEscuela'];
+	}
+	if ($_GET['task']="del") {
+			$control = $usrObject->delUsuario($_GET['id']);
+			if ($control) {
+				header("Location: usuarios.php?alerta=3");
+			}
+	}
+}
+
+

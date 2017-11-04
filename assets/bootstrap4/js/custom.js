@@ -1,5 +1,3 @@
-$( document ).ready(function() {
- 
  toastr.options = {
   "closeButton": true,
   "debug": false,
@@ -17,6 +15,9 @@ $( document ).ready(function() {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 }
+$( document ).ready(function() {
+ 
+
  
  $("#mimodal").click(function(){
     $("#formulario").show();
