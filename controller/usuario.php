@@ -61,7 +61,7 @@ foreach ($usuarios as $key)
 	<td>'.$key['idEscuela'].'</td>
 	<td>
 		<a class="btn btn-warning btn-sm update" href="'.$sitePath.'usuarios.php?task=edit&id='.$key['idUsuario'].'"><i class="fa fa-pencil"></i></a> 
-		<a class="btn btn-danger btn-sm delete" href="'.$sitePath.'usuarios.php?task=del&id='.$key['idUsuario'].'&task=del"><i class="fa fa-trash"></i></a></td>
+		<a class="btn btn-danger btn-sm delete confirmation" data-confmes="¿Desea ELIMINAR este elemento?" href="'.$sitePath.'usuarios.php?task=del&id='.$key['idUsuario'].'&task=del"><i class="fa fa-trash"></i></a></td>
 
 	</tr>';
 }

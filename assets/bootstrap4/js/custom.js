@@ -16,7 +16,12 @@
   "hideMethod": "fadeOut"
 }
 $( document ).ready(function() {
- 
+ $(".confirmation").click(function () {
+        var message = "Desea eliminar?";
+        if($(this).attr("data-confmes")) message = $(this).data("confmes");
+        return confirm(message);
+    });
+
 
  
  $("#mimodal").click(function(){
