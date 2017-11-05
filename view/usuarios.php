@@ -7,9 +7,9 @@
       					<h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
         
       				</div>
-      				<form method="POST" action="<?=$sitePath?>usuarios.php">
+      				<form id="formRest" method="POST" action="<?=$sitePath?>usuarios.php">
       				<div class="modal-body">
-			        		<input class="form-control" type="hidden" name="task" value="<?=$accion?>">
+			        		<input class="form-control" id="accion" type="hidden" name="task" value="<?=$accion?>">
 			        		<?=$input?>
 							<div class="form-group">
 								<label for="nombre" >Matricula: </label>
@@ -49,8 +49,8 @@
 							</div>
 			     	</div>
 			      	<div class="modal-footer">
-				      	<button type="button" class="btn btn-secondary" id="cancelModal">Cancelar</button>
-				        <button type="Submit" id="enviarUsuario" class="btn btn-primary">Enviar</button>
+				      	<input type="reset" class="btn btn-secondary" id="cancelModal" value="Cancelar">
+				      	<button type="Submit" id="enviarUsuario" class="btn btn-primary">Enviar</button>
 				    </div>
 			   		</form>
    				</div>

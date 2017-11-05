@@ -28,11 +28,18 @@ $( document ).ready(function() {
  $("#mimodal").click(function(){
     $("#formulario").show();
     $("#contenido").hide();
+    $("#formRest")[0].reset();
+    $(".form-control").val("");
+    $("#accion").val("add");
+
   });
 
   $("#cancelModal").click(function(){
     $("#formulario").hide();
     $("#contenido").show();
+    
+    $("#accion").val("add");
+    
   });
 
 //toastr.success('Agregado Correctamente.');
