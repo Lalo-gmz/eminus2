@@ -31,6 +31,7 @@ $( document ).ready(function() {
     $("#formRest")[0].reset();
     $(".form-control").val("");
     $("#accion").val("add");
+    $("#focuz").focus();
 
   });
 

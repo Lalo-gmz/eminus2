@@ -13,7 +13,7 @@
 			        		<?=$input?>
 							<div class="form-group">
 								<label for="nombre" >Matricula: </label>
-								<input class="form-control" required="" type="text" name="matricula" value="<?=$campo1?>">
+								<input id="focuz" autofocus class="form-control" required="" type="text" name="matricula" value="<?=$campo1?>">
 							</div>
 							<div class="form-group ">
 								<label for="nombre" >Nombre: </label>
