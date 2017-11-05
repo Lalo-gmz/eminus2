@@ -5,9 +5,9 @@ class Usuario extends Connection
 	public function contarUsuario(){
 		return $this->con->query("SELECT COUNT(*) AS total FROM usuario")->fetch(PDO::FETCH_ASSOC);
 	}
-	public function insertUsuario($nombre, $pass){
-		$query = $this->con->prepare("INSERT INTO usuario (matricula, contrasena) VALUES (?,?)");
-		$exc = $query->execute(array($nombre, $pass));
+	public function insertUsuario($matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela){
+		$query = $this->con->prepare("INSERT INTO usuario (matricula, nombre, apPaterno, apMaterno, eMail, telefono, contrasena, idEscuela) VALUES (?,?,?,?,?,?,?,?)");
+		$exc = $query->execute(array($matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela));
 
 		if ($exc) {
 			return true;
@@ -38,9 +38,9 @@ class Usuario extends Connection
 		}
 	}
 
-	public function editUsuario($id, $pass, $nombre){
-		$query = $this->con->prepare("UPDATE usuario SET matricula=?, contrasena=? WHERE idUsuario = ? ");
-		$exc = $query->execute(array($nombre, $pass, $id));
+	public function editUsuario($id,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela){
+		$query = $this->con->prepare("UPDATE usuario SET matricula=?, nombre=?, apPaterno=?, apMaterno=?, eMail=?, telefono=?, contrasena=?, idEscuela=? WHERE idUsuario = ? ");
+		$exc = $query->execute(array($matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela,$id));
 
 		if ($exc) {
 			return true;

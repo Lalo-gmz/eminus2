@@ -96,7 +96,7 @@ if (isset($_POST['task'])) {
 		$tel = $_POST['tel'];
 		$contra = $_POST['contra'];
 		$escuela = $_POST['escuela'];
-		$control = $usrObject->insertUsuario($nombre, $nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela);
+		$control = $usrObject->insertUsuario($matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela);
 		if ($control) {
 				header("Location: usuarios.php?alerta=1");
 			}
@@ -111,7 +111,7 @@ if (isset($_POST['task'])) {
 		$tel = $_POST['tel'];
 		$contra = $_POST['contra'];
 		$escuela = $_POST['escuela'];
-		$control = $usrObject->editUsuario($id,$nombre, $nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela);
+		$control = $usrObject->editUsuario($id,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela);
 		if ($control) {
 				header("Location: usuarios.php?alerta=2");
 			}
@@ -125,7 +125,7 @@ if (isset($_GET['task'])) {
 			$visibleF= '';
 			$visibleC= 'none';
 			$accion = "edit";
-			$input = '<input class="form-control" type="hidden" name="task" value="'.$control['idUsuario'].'">';
+			$input = '<input class="form-control" type="hidden" name="id" value="'.$control['idUsuario'].'">';
 			$campo1 = $control['matricula'];
 			$campo2 = $control['nombre'];
 			$campo3 = $control['apPaterno'];
@@ -135,7 +135,7 @@ if (isset($_GET['task'])) {
 			$campo7 = $control['contrasena'];
 			$campo8 = $control['idEscuela'];
 	}
-	if ($_GET['task']="del") {
+	if ($_GET['task']=="del") {
 			$control = $usrObject->delUsuario($_GET['id']);
 			if ($control) {
 				header("Location: usuarios.php?alerta=3");

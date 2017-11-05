@@ -7,7 +7,7 @@
       					<h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
         
       				</div>
-      				<form method="POST" action="">
+      				<form method="POST" action="<?=$sitePath?>usuarios.php">
       				<div class="modal-body">
 			        		<input class="form-control" type="hidden" name="task" value="<?=$accion?>">
 			        		<?=$input?>
@@ -29,11 +29,11 @@
 							</div>
 							<div class="form-group">
 								<label for="mail" >Correo Electrónico: </label>
-								<input class="form-control" required="" type="text" name="mail" value="<?=$campo5?>">
+								<input class="form-control" required="" type="mail" name="mail" value="<?=$campo5?>">
 							</div>
 							<div class="form-group">
 								<label for="tel" >Teléfono: </label>
-								<input class="form-control" required="" type="text" name="tel" value="<?=$campo6?>">
+								<input class="form-control" required="" type="number" name="tel" value="<?=$campo6?>">
 							</div>
 							<div class="form-group">
 								<label for="contra" >Contraseña: </label>
