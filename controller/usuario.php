@@ -88,21 +88,30 @@ $accion = "add";
 
 if (isset($_POST['task'])) {
 	if ($_POST['task'] == "add") {
+		$matricula = $_POST['matricula'];
 		$nombre = $_POST['nombre'];
-		$pass1 = $_POST['pass1'];
-		$pass2 = $_POST['pass2'];
-
-		$control = $usrObject->insertUsuario($nombre, $pass1);
+		$ap1 = $_POST['ap1'];
+		$ap2 = $_POST['ap2'];
+		$mail = $_POST['mail'];
+		$tel = $_POST['tel'];
+		$contra = $_POST['contra'];
+		$escuela = $_POST['escuela'];
+		$control = $usrObject->insertUsuario($nombre, $nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela);
 		if ($control) {
 				header("Location: usuarios.php?alerta=1");
 			}
 	}
 	if ($_POST['task']=="edit") {
 		$id= $_POST['id'];
+		$matricula = $_POST['matricula'];
 		$nombre = $_POST['nombre'];
-		$pass1 = $_POST['pass1'];
-	
-		$control = $usrObject->editUsuario($id, $pass1, $nombre);
+		$ap1 = $_POST['ap1'];
+		$ap2 = $_POST['ap2'];
+		$mail = $_POST['mail'];
+		$tel = $_POST['tel'];
+		$contra = $_POST['contra'];
+		$escuela = $_POST['escuela'];
+		$control = $usrObject->editUsuario($id,$nombre, $nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela);
 		if ($control) {
 				header("Location: usuarios.php?alerta=2");
 			}
