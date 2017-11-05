@@ -5,6 +5,9 @@ class Usuario extends Connection
 	public function contarUsuario(){
 		return $this->con->query("SELECT COUNT(*) AS total FROM usuario")->fetch(PDO::FETCH_ASSOC);
 	}
+	public function contarUsuarioFiltro($clave,$limInf,$sizePage){
+		return $this->con->query("SELECT COUNT(*) AS total FROM usuario WHERE matricula LIKE '%".$clave."%' or apPaterno like '%".$clave."%' or apMaterno Like '%".$clave."%' or nombre LIKE '%".$clave."%' ORDER BY idUsuario DESC LIMIT ".$limInf.",".$sizePage."")->fetch(PDO::FETCH_ASSOC);
+	}
 	public function insertUsuario($matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela){
 		$query = $this->con->prepare("INSERT INTO usuario (matricula, nombre, apPaterno, apMaterno, eMail, telefono, contrasena, idEscuela) VALUES (?,?,?,?,?,?,?,?)");
 		$exc = $query->execute(array($matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela));

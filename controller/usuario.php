@@ -139,6 +139,44 @@ if (isset($_POST['task'])) {
 			}
 		}
 
+		$totalrow = $usrObject->contarUsuarioFiltro($clave,$limInf,$sizePage); //contar las filas
+		$sizePage = 10; //tamaño de la paginación
+		$totalPages = ceil($totalrow['total'] / $sizePage) ; //calcular las paginas
+
+		$limInf = ($_SESSION['curpage']-1)*$sizePage; // limite inferior 
+
+		/* ===== Imprime paginador ======*/
+		$atras = $_SESSION['curpage']-1;
+		$siguiente = $_SESSION['curpage']+1;
+		$paginador="";
+		if ($_SESSION['curpage'] == 1) {
+			$paginador .='<li class="page-item disabled">
+						<a class="page-link" href="'.$sitePath.'usuarios.php?page='.$atras.'" tabindex="-1">Anterior</a>
+		    		</li>';
+		}else{
+			$paginador .='<li class="page-item">
+						<a class="page-link" href="'.$sitePath.'usuarios.php?page='.$atras.'" tabindex="-1">Anterior</a>
+		    		</li>';
+		}
+		for ($i=1; $i<=$totalPages ; $i++) { 
+			if ($i== $_SESSION['curpage']) {
+				$paginador .='<li class="page-item active"><span class="page-link">'.$i.'<span class="sr-only">(current)</span>
+		      </span></li>';
+			}else{
+			$paginador .='<li class="page-item"><a class="page-link" href="'.$sitePath.'usuarios.php?page='.$i.'">'.$i.'</a></li>';
+				
+			}
+		}
+		if ($_SESSION['curpage'] == $totalPages) {
+			$paginador .='<li class="page-item disabled">
+						<a class="page-link" href="'.$sitePath.'usuarios.php?page='.$siguiente.'">Siguiente</a>
+		    		</li>';
+		}else{
+			$paginador .='<li class="page-item">
+						<a class="page-link" href="'.$sitePath.'usuarios.php?page='.$siguiente.'">Siguiente</a>
+		    		</li>';
+		}
+
 	
 }
 if (isset($_GET['task'])) {

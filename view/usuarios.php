@@ -29,7 +29,7 @@
 							</div>
 							<div class="form-group">
 								<label for="mail" >Correo Electrónico: </label>
-								<input class="form-control" required="" type="mail" name="mail" value="<?=$campo5?>">
+								<input class="form-control" required="" type="email" name="mail" value="<?=$campo5?>">
 							</div>
 							<div class="form-group">
 								<label for="tel" >Teléfono: </label>
@@ -84,7 +84,7 @@
 			</div>	
 			
 			<br>
-			<div class="table-responsive ">
+			<div class="table-responsive">
 				<table class="table table-bordered table-striped">
 					<thead class="thead-inverse">
 						<tr>
