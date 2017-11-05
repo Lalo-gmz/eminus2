@@ -59,14 +59,34 @@
   	</div>
 	<div id="contenido" class="row" style="display:<?=$visibleC?>;">
 		<div class="col-md-12"><br>
-			<h3>Lista de Usuarios</h3>	
-			<div class="col-md-12">
-				<button id="mimodal" type="button" class="btn pull-right btn-primary"><i class="fa fa-plus"></i> Agregar</button>
-			</div>
-			<br><br>
-			<div class="table-responsive">
-				<table class="table table-bordered table-striped bg-blanco">
-					<thead>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Lista de Usuarios</h3>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-sm-9">
+				<form method="POST" action="<?=$sitePath?>usuarios.php">
+					<input type="hidden" name="task" value="buscar">
+					<label class="sr-only" for="inlineFormInputGroup">Username</label>
+					  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+					    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+					    <input type="text" name="clave" class="form-control" id="buscar" placeholder="Palabra...">
+					  <span class="input-group-btn">
+				        <button class="btn btn-success" type="Submit">Buscar</button>
+				      </span>
+					  </div>
+				</form>
+				</div>
+				<div class="col-sm-3">
+					<button id="mimodal" type="button" class="btn pull-right btn-primary"><i class="fa fa-plus"></i> Agregar</button>
+				</div>
+			</div>	
+			
+			<br>
+			<div class="table-responsive ">
+				<table class="table table-bordered table-striped">
+					<thead class="thead-inverse">
 						<tr>
 							<th>id</th>
 							<th>Matricula</th>

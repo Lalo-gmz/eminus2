@@ -16,6 +16,7 @@
   "hideMethod": "fadeOut"
 }
 $( document ).ready(function() {
+
  $(".confirmation").click(function () {
         var message = "Desea eliminar?";
         if($(this).attr("data-confmes")) message = $(this).data("confmes");
@@ -37,22 +38,25 @@ $( document ).ready(function() {
 //toastr.success('Agregado Correctamente.');
      //imprimeTablaUsuarios();
      
-   /*function imprimeTablaUsuarios(){
-     $.ajax({
-          data: 'tabla=1',
-          url: 'controller/vista1.php',
-          type: 'post',
-          beforeSend: function(){
-             $("#tabla").html("Procesando, espere por favor...");
-          },
-          success: function(response){
-              
-              $("#tabla").html(response);
-          }
-
-        });
+ /* function imprimeBuscaUsuarios(){
+       $.ajax({
+                data:  $("#buscarUsuario").serialize(), 
+                url:   'usuarios.php', 
+                type:  'post', 
+              }).done(function(data){
+                $("#tabla").html(data);
+                
+                
+              }).fail(function(){
+                  $("#tabla").html('No se encontraron coincidencias...');
+              });
+   
    }
+   $("#buscar").keyup(function(){
+      imprimeBuscaUsuarios();
+   });*/
 
+  /*
     $( "#enviarUsuario" ).click(function() {
   		event.preventDefault();
        var camp1 = $("#matricula").val();

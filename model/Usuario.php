@@ -20,6 +20,9 @@ class Usuario extends Connection
 	public function getAllUsuario($limInf,$sizePage){
 		return $this->con->query("SELECT * FROM usuario ORDER BY idUsuario DESC LIMIT ".$limInf.",".$sizePage."")->fetchAll(PDO::FETCH_ASSOC);
 	}
+	public function getFilterUsuario($clave,$limInf,$sizePage){
+		return $this->con->query("SELECT * FROM usuario WHERE matricula LIKE '%".$clave."%' or apPaterno like '%".$clave."%' or apMaterno Like '%".$clave."%' or nombre LIKE '%".$clave."%' ORDER BY idUsuario DESC LIMIT ".$limInf.",".$sizePage."")->fetchAll(PDO::FETCH_ASSOC);
+	}
 	public function delUsuario($id){
 		$control = $this->con->exec("DELETE FROM usuario WHERE idUsuario = '$id' ");
 		if ($control) {
@@ -38,7 +41,7 @@ class Usuario extends Connection
 		}
 	}
 
-	public function editUsuario($id,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela){
+	public function editUsuario($id,$matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela){
 		$query = $this->con->prepare("UPDATE usuario SET matricula=?, nombre=?, apPaterno=?, apMaterno=?, eMail=?, telefono=?, contrasena=?, idEscuela=? WHERE idUsuario = ? ");
 		$exc = $query->execute(array($matricula,$nombre,$ap1,$ap2,$mail,$tel,$contra,$escuela,$id));
 
